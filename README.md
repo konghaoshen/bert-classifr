@@ -185,6 +185,20 @@ run_classifier.py
 
 - task_name 表示我调用的是什么处理类 ，这里我们是用我们新的类所以选 emlo
 - 文件dir 可以自己定义， 如果无定义到会出错， 我这里是有3个文件夹 uncased里面放预训练模型， glue放数据，tmp/emotion里面放结果
+这里简单的解释一下参数的含义，在后面的代码阅读里读者可以更加详细的了解其意义。
+
+- task_name 任务的名字，这里我们Fine-Tuning MRPC任务
+- do_train 是否训练，这里为True
+- do_eval 是否在训练结束后验证，这里为True
+- data_dir 训练数据目录，配置了环境变量后不需要修改，否则填入绝对路径
+- vocab_file BERT模型的词典
+- bert_config_file BERT模型的配置文件
+- init_checkpoint Fine-Tuning的初始化参数
+- max_seq_length Token序列的最大长度，这里是128
+- train_batch_size batch大小，对于普通8GB的GPU，最大batch大小只能是8，再大就会OOM
+- learning_rate
+- num_train_epochs 训练的epoch次数，根据任务进行调整
+- output_dir 训练得到的模型的存放目录
 
 **训练结果如下：**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190519002038639.png)
